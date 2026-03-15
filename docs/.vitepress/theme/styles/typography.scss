@@ -1,0 +1,53 @@
+:root {
+  --vp-font-family-base: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  --vp-font-family-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+}
+
+.vp-doc {
+  font-size: 17px;
+  line-height: 2.1;
+  letter-spacing: 0.3px;
+}
+
+.vp-doc p,
+.vp-doc li {
+  color: #1f2937;
+}
+
+.vp-doc h1 {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+}
+
+.vp-doc h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 36px;
+  margin-bottom: 14px;
+}
+
+.vp-doc h3 {
+  font-size: 20px;
+  font-weight: 650;
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.vp-doc a {
+  text-decoration: none;
+  border-bottom: 1px dashed #7aa2ff;
+}
+
+.vp-doc a:hover {
+  color: #1b66ff;
+  border-bottom-style: solid;
+}
+
+.vp-doc code:not(pre code) {
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  background: #f3f6ff;
+}
