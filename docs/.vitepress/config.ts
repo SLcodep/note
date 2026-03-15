@@ -9,7 +9,7 @@ const base = "/note/";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base,
+  base: "/note/",
   extends: teekConfig,
   title: "SLcoedp的个人笔记",
   description: description,
