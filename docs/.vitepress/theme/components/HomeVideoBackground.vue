@@ -1,16 +1,25 @@
 <script setup lang="ts" name="HomeVideoBackground">
 import { computed, onMounted, onUnmounted, ref } from "vue";
+<<<<<<< HEAD
 import { useData, withBase } from "vitepress";
+=======
+import { useData } from "vitepress";
+>>>>>>> 8965a4738ace0837293201430ea07c712e062b50
 
 const { page, site } = useData();
 const isIndexHome = computed(() => page.value.relativePath === "index.md");
 const heroActiveClass = "home-hero-active";
 const passiveEvent = { passive: true } as const;
+
 const videoSrc = withBase("/play.mp4");
 const posterSrc = withBase("/bg4.webp");
 const videoReady = ref(false);
 
+
 const getHero = () => document.getElementById("home-video-hero") as HTMLElement | null;
+const enableVideo = () => {
+  shouldRenderVideo.value = true;
+};
 
 const scrollToContent = () => {
   const next = getHero()?.nextElementSibling as HTMLElement | null;
@@ -30,12 +39,35 @@ const markVideoReady = () => {
 };
 
 onMounted(() => {
+  idleId =
+    "requestIdleCallback" in window
+      ? (window as Window & { requestIdleCallback: (fn: () => void, options?: { timeout: number }) => number }).requestIdleCallback(
+        enableVideo,
+        { timeout: 1200 }
+      )
+      : window.setTimeout(enableVideo, 400);
+  window.addEventListener("pointerdown", quickStart, passiveEvent);
+  window.addEventListener("wheel", quickStart, passiveEvent);
+  window.addEventListener("touchstart", quickStart, passiveEvent);
+  window.addEventListener("keydown", quickStart);
+
   updateHeroMode();
   window.addEventListener("scroll", updateHeroMode, passiveEvent);
   window.addEventListener("resize", updateHeroMode, passiveEvent);
 });
 
 onUnmounted(() => {
+  if (idleId !== undefined) {
+    if ("cancelIdleCallback" in window) {
+      (window as Window & { cancelIdleCallback: (id: number) => void }).cancelIdleCallback(idleId);
+    } else {
+      clearTimeout(idleId);
+    }
+  }
+  window.removeEventListener("pointerdown", quickStart);
+  window.removeEventListener("wheel", quickStart);
+  window.removeEventListener("touchstart", quickStart);
+  window.removeEventListener("keydown", quickStart);
   document.documentElement.classList.remove(heroActiveClass);
   window.removeEventListener("scroll", updateHeroMode);
   window.removeEventListener("resize", updateHeroMode);
@@ -43,10 +75,16 @@ onUnmounted(() => {
 </script>
 
 <template>
+<<<<<<< HEAD
   <section v-if="isIndexHome" id="home-video-hero" class="home-video-hero" :class="{ 'is-video-ready': videoReady }">
     <video class="home-video-hero__media" autoplay muted loop playsinline webkit-playsinline="true"
       disablePictureInPicture preload="auto" crossorigin="anonymous" :poster="posterSrc" @loadeddata="markVideoReady"
       @canplay="markVideoReady">
+=======
+  <section v-if="isIndexHome" id="home-video-hero" class="home-video-hero">
+    <video v-if="shouldRenderVideo" class="home-video-hero__media" autoplay muted loop playsinline
+      webkit-playsinline="true" disablePictureInPicture preload="none" :poster="posterSrc">
+>>>>>>> 8965a4738ace0837293201430ea07c712e062b50
       <source :src="videoSrc" type="video/mp4" />
     </video>
     <div class="home-video-hero__mask"></div>
@@ -74,7 +112,11 @@ onUnmounted(() => {
   width: 100%;
   overflow: hidden;
   border-radius: 0 0 24px 24px;
+<<<<<<< HEAD
   background: #071329;
+=======
+  background: #071329 url("/blog/bg4.webp") center/cover no-repeat;
+>>>>>>> 8965a4738ace0837293201430ea07c712e062b50
 }
 
 .home-video-hero__media {
