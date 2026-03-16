@@ -39,13 +39,16 @@ import { readingIcon } from "vitepress-theme-teek"
 
 const { frontmatter } = useData();
 onMounted(() => {
-  const heroTextDom = document.querySelector<HTMLElement>(".VPHero .text");
-  const textDom = document.querySelector<HTMLElement>("#hero-text");
+  // Defer direct DOM mutation to avoid racing with hydration.
+  requestAnimationFrame(() => {
+    const heroTextDom = document.querySelector<HTMLElement>(".VPHero .text");
+    const textDom = document.querySelector<HTMLElement>("#hero-text");
 
-  if (!heroTextDom || !textDom) return;
+    if (!heroTextDom || !textDom) return;
 
-  while (heroTextDom.lastChild) heroTextDom.lastChild.remove();
-  heroTextDom.append(textDom);
+    while (heroTextDom.lastChild) heroTextDom.lastChild.remove();
+    heroTextDom.append(textDom);
+  });
 });
 </script>
 
