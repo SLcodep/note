@@ -96,8 +96,12 @@ export default defineConfig({
   vite: {
     plugins: [llmstxt() as any],
   },
-  // transformHtml: (code, id, context) => {
-  //   if (context.page !== "404.md") return code;
-  //   return code.replace("404 | ", "");
-  // },
+  transformHtml: (code) => {
+    // Theme internals can render slightly different SSR/CSR trees on first paint.
+    // Allow mismatch on app root to avoid runtime hydration warning noise.
+    return code.replace(
+      '<div id="app">',
+      '<div id="app" data-allow-mismatch="children">',
+    );
+  },
 });
