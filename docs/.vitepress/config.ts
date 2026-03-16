@@ -97,11 +97,9 @@ export default defineConfig({
     plugins: [llmstxt() as any],
   },
   transformHtml: (code) => {
-    // Theme internals can render slightly different SSR/CSR trees on first paint.
-    // Allow mismatch on app root to avoid runtime hydration warning noise.
     return code.replace(
       '<div id="app">',
-      '<div id="app" data-allow-mismatch="children">',
+      '<div id="app" data-allow-mismatch>',
     );
   },
 });
