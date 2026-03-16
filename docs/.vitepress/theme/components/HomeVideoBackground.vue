@@ -8,7 +8,7 @@ const heroActiveClass = "home-hero-active";
 const passiveEvent = { passive: true } as const;
 const shouldRenderVideo = ref(false);
 const videoSrc = "/play.mp4";
-const posterSrc = "/bg4.webp";
+const posterSrc = "/blog/bg4.webp";
 let idleId: number | undefined;
 const quickStart = () => enableVideo();
 
@@ -97,7 +97,7 @@ onUnmounted(() => {
   width: 100%;
   overflow: hidden;
   border-radius: 0 0 24px 24px;
-  background: #071329 url("/bg4.webp") center/cover no-repeat;
+  background: #071329 url("/blog/bg4.webp") center/cover no-repeat;
 }
 
 .home-video-hero__media {
