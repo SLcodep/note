@@ -2,6 +2,7 @@
 import Teek from "vitepress-theme-teek";
 import ContributeChart from "./ContributeChart.vue";
 import NotFound from "./404.vue";
+import HomeVideoBackground from "./HomeVideoBackground.vue";
 
 </script>
 
@@ -9,6 +10,10 @@ import NotFound from "./404.vue";
   <ClientOnly>
     <div data-allow-mismatch>
       <Teek.Layout>
+        <template #teek-home-before>
+          <HomeVideoBackground />
+        </template>
+
         <template #teek-archives-top-before>
           <ContributeChart />
         </template>

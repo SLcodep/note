@@ -7,16 +7,18 @@ export const nav: DefaultTheme.NavItem[] = [
   {
     text: "前端基础",
     items: [
-      { text: "javascript", link: "/javascipt/javascript" },
-      { text: "css", link: "/css/01" },
-      { text: "计算机网络", link: "/nwtwork/01" },
+      { text: "JavaScript", link: "/05.前端基础/01.javascript/01.简介" },
+      { text: "CSS", link: "/05.前端基础/05.CSS/01.css布局方式" },
+      { text: "计算机网络", link: "/05.前端基础/15.计算机网络/01.面试合集" },
     ],
   },
   {
-    text: "功能页",
+    text: "索引",
     items: [
-      { text: "归档页", link: "/archives" },
-      { text: "清单页", link: "/articleOverview" },
+      { text: "最近更新", link: "/articleOverview" },
+      { text: "分类", link: "/categories" },
+      { text: "标签", link: "/tags" },
+      { text: "归档", link: "/archives" },
       { text: "登录页", link: "/login" },
       {
         text: "风险链接提示页",
