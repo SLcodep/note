@@ -1,11 +1,14 @@
 <script setup lang="ts" name="HomeVideoBackground">
-import { computed, onMounted, onUnmounted } from "vue";
-import { useData } from "vitepress";
+import { computed, onMounted, onUnmounted, ref } from "vue";
+import { useData, withBase } from "vitepress";
 
 const { page, site } = useData();
 const isIndexHome = computed(() => page.value.relativePath === "index.md");
 const heroActiveClass = "home-hero-active";
 const passiveEvent = { passive: true } as const;
+const videoSrc = withBase("/play.mp4");
+const posterSrc = withBase("/bg4.webp");
+const videoReady = ref(false);
 
 const getHero = () => document.getElementById("home-video-hero") as HTMLElement | null;
 
@@ -22,6 +25,10 @@ const updateHeroMode = () => {
   document.documentElement.classList.toggle(heroActiveClass, window.scrollY < threshold);
 };
 
+const markVideoReady = () => {
+  videoReady.value = true;
+};
+
 onMounted(() => {
   updateHeroMode();
   window.addEventListener("scroll", updateHeroMode, passiveEvent);
@@ -36,9 +43,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section v-if="isIndexHome" id="home-video-hero" class="home-video-hero">
-    <video class="home-video-hero__media" autoplay muted loop playsinline preload="metadata">
-      <source src="/play.mp4" type="video/mp4" />
+  <section v-if="isIndexHome" id="home-video-hero" class="home-video-hero" :class="{ 'is-video-ready': videoReady }">
+    <video class="home-video-hero__media" autoplay muted loop playsinline webkit-playsinline="true"
+      disablePictureInPicture preload="auto" crossorigin="anonymous" :poster="posterSrc" @loadeddata="markVideoReady"
+      @canplay="markVideoReady">
+      <source :src="videoSrc" type="video/mp4" />
     </video>
     <div class="home-video-hero__mask"></div>
     <div class="home-video-hero__content">
@@ -65,6 +74,7 @@ onUnmounted(() => {
   width: 100%;
   overflow: hidden;
   border-radius: 0 0 24px 24px;
+  background: #071329;
 }
 
 .home-video-hero__media {
@@ -73,6 +83,12 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.home-video-hero.is-video-ready .home-video-hero__media {
+  opacity: 1;
 }
 
 .home-video-hero__mask {
