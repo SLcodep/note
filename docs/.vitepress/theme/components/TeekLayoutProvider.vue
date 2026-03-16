@@ -8,7 +8,9 @@ import NotFound from "./404.vue";
 <template>
   <Teek.Layout>
     <template #teek-archives-top-before>
-      <ContributeChart />
+      <ClientOnly>
+        <ContributeChart />
+      </ClientOnly>
     </template>
 
     <template #not-found>
