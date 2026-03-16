@@ -9,7 +9,7 @@ const description = ["欢迎来到我个人笔记记录"].toString();
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: "/note/",
+  base: "/",
   extends: teekConfig,
   title: "SLcoedp的个人笔记",
   description: description,
