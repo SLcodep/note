@@ -6,17 +6,19 @@ import NotFound from "./404.vue";
 </script>
 
 <template>
-  <Teek.Layout>
-    <template #teek-archives-top-before>
-      <ClientOnly>
-        <ContributeChart />
-      </ClientOnly>
-    </template>
+  <div data-allow-mismatch="children">
+    <Teek.Layout>
+      <template #teek-archives-top-before>
+        <ClientOnly>
+          <ContributeChart />
+        </ClientOnly>
+      </template>
 
-    <template #not-found>
-      <NotFound />
-    </template>
-  </Teek.Layout>
+      <template #not-found>
+        <NotFound />
+      </template>
+    </Teek.Layout>
+  </div>
 </template>
 
 <style lang="scss">
