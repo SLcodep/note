@@ -4,14 +4,13 @@ on:
   push:
     branches: [main]
 
-# 设置tokenn访问权限
+# 设置token访问权限
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 只允许同时进行一次部署，跳过正在运行和最新队列之间的运行队列
-# 但是，不要取消正在进行的运行，因为我们希望允许这些生产部署完成
+# 并发控制
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -20,44 +19,51 @@ jobs:
   # 构建工作
   build:
     runs-on: ubuntu-latest
+    # 确保构建失败时立即终止
+    continue-on-error: false
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # 升级到最新版
         with:
-          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
+          fetch-depth: 0 # 启用lastUpdated需要
+
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2 # 安装pnpm并添加到环境变量
+        uses: pnpm/action-setup@v3 # 升级到最新版
         with:
-          version: 8.6.12 # 指定需要的 pnpm 版本
+          version: 10.11.1 # 与你Cloudflare环境一致的版本
+
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # 升级到最新版
         with:
-          node-version: 18
-          cache: pnpm # 设置缓存
+          node-version: 22 # 与你Cloudflare环境一致的版本
+          cache: pnpm # 缓存pnpm依赖
+
       - name: Setup Pages
-        uses: actions/configure-pages@v3  # 在工作流程自动配置GithubPages
-      - name: install pnpm
-        run: npm install pnpm
+        uses: actions/configure-pages@v4 # 升级到最新版
+
       - name: Install dependencies
-        run: pnpm install # 安装依赖
+        run: pnpm install --frozen-lockfile # 锁定依赖版本，避免意外更新
+
       - name: Build with VitePress
         run: |
-          pnpm run docs:build # 启动项目
-          touch .nojekyll  # 通知githubpages不要使用Jekyll处理这个站点，不知道为啥不生效，就手动搞了
+          pnpm run docs:build
+          # 关键：把.nojekyll创建到构建产物目录中
+          touch docs/.vitepress/dist/.nojekyll
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # 上传构建产物
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist # 指定上传的路径，当前是根目录，如果是docs需要加docs/的前缀
+          path: docs/.vitepress/dist # 产物路径正确
 
   # 部署工作
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }} # 从后续的输出中获取部署后的页面URL
-    needs: build    # 在build后面完成
-    runs-on: ubuntu-latest  # 运行在最新版本的ubuntu系统上
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
     name: Deploy
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment  # 指定id
-        uses: actions/deploy-pages@v4 # 将之前的构建产物部署到github pages中
+        id: deployment
+        uses: actions/deploy-pages@v4 # 最新稳定版
