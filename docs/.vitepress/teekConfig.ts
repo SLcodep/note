@@ -9,7 +9,7 @@ export const teekConfig = defineTeekConfig({
   blogger: {
     name: "二丫讲梵",
     slogan: "行者常至，为者常成",
-    avatar: "/blog/bg4.webp",
+    avatar: "/bg4.webp",
     shape: "square",
   },
   social: [
