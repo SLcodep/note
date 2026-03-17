@@ -1,5 +1,20 @@
 import { defineTeekConfig } from "vitepress-theme-teek/config";
 import { version } from "vitepress-theme-teek/es/version";
+import type { DefaultTheme } from "vitepress";
+
+const withCollapsibleSidebar = (
+  items: DefaultTheme.SidebarItem[],
+): DefaultTheme.SidebarItem[] => {
+  return items.map((item) => {
+    if (!item.items?.length) return item;
+
+    return {
+      ...item,
+      collapsed: item.collapsed ?? true,
+      items: withCollapsibleSidebar(item.items),
+    };
+  });
+};
 
 export const teekConfig = defineTeekConfig({
   teekHome: true,
@@ -103,6 +118,7 @@ export const teekConfig = defineTeekConfig({
   vitePlugins: {
     sidebarOption: {
       initItems: false,
+      sidebarItemsResolved: (items) => withCollapsibleSidebar(items),
     },
   },
 });
