@@ -7,6 +7,7 @@ const isIndexHome = computed(() => page.value.relativePath === "index.md");
 const heroActiveClass = "home-hero-active";
 const passiveEvent = { passive: true } as const;
 
+const videoWebmSrc = withBase("/play.webm");
 const videoSrc = withBase("/play.mp4");
 const posterSrc = withBase("/bg4.webp");
 const videoReady = ref(false);
@@ -46,9 +47,10 @@ onUnmounted(() => {
 <template>
   <section v-if="isIndexHome" id="home-video-hero" class="home-video-hero" :class="{ 'is-video-ready': videoReady }">
     <video class="home-video-hero__media" autoplay muted loop playsinline webkit-playsinline="true"
-      disablePictureInPicture preload="auto" crossorigin="anonymous" :poster="posterSrc" @loadeddata="markVideoReady"
-      @canplay="markVideoReady">
+      disablePictureInPicture preload="metadata" crossorigin="anonymous" :poster="posterSrc"
+      @loadeddata="markVideoReady" @canplay="markVideoReady">
 
+      <source :src="videoWebmSrc" type="video/webm" />
       <source :src="videoSrc" type="video/mp4" />
     </video>
     <div class="home-video-hero__mask"></div>

@@ -12,6 +12,7 @@ export const nav: DefaultTheme.NavItem[] = [
       { text: "计算机网络", link: "/05.前端基础/15.计算机网络/01.面试合集" },
     ],
   },
+  { text: "vue", link: "/vue/1" },
   {
     text: "索引",
     items: [

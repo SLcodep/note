@@ -1,8 +1,13 @@
 <script setup lang="ts" name="TeekLayoutProvider">
+import { computed, defineAsyncComponent } from "vue";
+import { useData } from "vitepress";
 import Teek from "vitepress-theme-teek";
-import ContributeChart from "./ContributeChart.vue";
 import NotFound from "./404.vue";
 import HomeVideoBackground from "./HomeVideoBackground.vue";
+
+const { page } = useData();
+const isArchivesPage = computed(() => page.value.relativePath === "@pages/archivesPage.md");
+const AsyncContributeChart = defineAsyncComponent(() => import("./ContributeChart.vue"));
 
 </script>
 
@@ -15,7 +20,7 @@ import HomeVideoBackground from "./HomeVideoBackground.vue";
         </template>
 
         <template #teek-archives-top-before>
-          <ContributeChart />
+          <AsyncContributeChart v-if="isArchivesPage" />
         </template>
 
         <template #not-found>

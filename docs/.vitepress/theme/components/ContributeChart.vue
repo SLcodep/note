@@ -1,8 +1,17 @@
 <script setup lang="ts" name="ContributeChart">
-import * as echarts from "echarts";
+import * as echarts from "echarts/core";
+import { HeatmapChart } from "echarts/charts";
+import {
+  CalendarComponent,
+  TooltipComponent,
+  VisualMapComponent,
+} from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
 import { ref, watch, nextTick, computed, useTemplateRef, onMounted } from "vue";
 import { useData } from "vitepress";
 import { formatDate, usePosts, useIntersectionObserver } from "vitepress-theme-teek";
+
+echarts.use([HeatmapChart, CalendarComponent, TooltipComponent, VisualMapComponent, CanvasRenderer]);
 
 const { isDark } = useData();
 const posts = usePosts();
@@ -14,7 +23,7 @@ const beforeOnYear = formatDate(new Date(new Date().getTime() - 364 * 24 * 60 * 
 
 // 贡献图数据
 const contributeList = computed(() => {
-  const contributeObject = ref({});
+  const contributeObject = ref<Record<string, number>>({});
 
   posts.value.sortPostsByDate.forEach(item => {
     if (!item.date) return;
@@ -54,7 +63,7 @@ const { create } = useIntersectionObserver(
 // Echarts 配置项
 const option = {
   tooltip: {
-    formatter: function (params) {
+    formatter: function (params: { value: [string, number] }) {
       return `${params.value[0]} <br/> ${params.value[1]} 篇文章`;
     },
   },
