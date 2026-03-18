@@ -29,3 +29,5 @@ coverage
 *.sw?
 
 /**/.vitepress/cache/*
+/**/.vitepress/.temp/*
+/**/.vitepress/config.ts.timestamp-*.mjs

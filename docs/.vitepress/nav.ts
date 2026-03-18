@@ -13,7 +13,6 @@ export const nav: DefaultTheme.NavItem[] = [
     ],
   },
   { text: "项目总结", link: "/project/AI" },
-  { text: "Vue", link: "/vue/index" },
   {
     text: "索引",
     items: [

@@ -5,23 +5,20 @@ import { nav } from "./nav";
 
 const description = ["欢迎来到我个人笔记记录"].toString();
 
-// const base = "/note/";
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: "/",
   extends: teekConfig,
   title: "SLcoedp的个人笔记",
-  description: description,
+  description,
   cleanUrls: false,
   lastUpdated: true,
   lang: "zh-CN",
   head: [
     [
       "link",
-      { rel: "icon", type: "image/svg+xml", href: "/teek-logo-mini.svg" },
+      { rel: "icon", type: "image/svg+xml", href: "/log.svg" },
     ],
-    ["link", { rel: "icon", type: "image/png", href: "/teek-logo-mini.png" }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:locale", content: "zh-CN" }], // 声明页面语言是「简体中文」
     ["meta", { property: "og:title", content: "Teek | VitePress Theme" }],
@@ -88,7 +85,7 @@ export default defineConfig({
       prev: "上一页",
       next: "下一页",
     },
-    nav: nav,
+    nav,
     search: {
       provider: "local",
     },

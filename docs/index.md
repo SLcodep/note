@@ -7,10 +7,10 @@ hero:
   actions:
     - theme: brand
       text: 开始
-      link: /qianduan/qianduan-index
+      link: /articleOverview
     - theme: alt
       text: 配置
-      link: /reference/config
+      link: /categories
   image:
     src: /log.svg
     alt: Teek

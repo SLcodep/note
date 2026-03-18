@@ -103,7 +103,13 @@ export const teekConfig = defineTeekConfig({
     moreLabel: "更多 ...",
     limit: 24,
   },
-  homeCardSort: ["category", "tag", "docAnalysis", "topArticle", "friendLink"],
+  homeCardSort: [
+    "category",
+    "tag",
+    "docAnalysis",
+    "topArticle",
+    "friendLink",
+  ],
   codeBlock: {
     copiedDone: (TkMessage) => TkMessage.success("复制成功！"),
   },
