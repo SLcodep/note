@@ -19,6 +19,7 @@ const withCollapsibleSidebar = (
 export const teekConfig = defineTeekConfig({
   teekHome: true,
   vpHome: false,
+  pageStyle: "default",
   sidebarTrigger: true,
   author: { name: "SLcodep", link: "https://github.com/SLcodep/slcodep" },
   blogger: {
@@ -111,6 +112,7 @@ export const teekConfig = defineTeekConfig({
     "friendLink",
   ],
   codeBlock: {
+    langTextTransform: "lowercase",
     copiedDone: (TkMessage) => TkMessage.success("复制成功！"),
   },
   articleShare: { enabled: true },

@@ -1,0 +1,142 @@
+html[code-block="tk"]:not(.dark) {
+  --vp-code-block-color: #d4d4d4;
+  --vp-code-block-bg: #282c34;
+  --vp-code-block-divider-color: rgba(255, 255, 255, 0.08);
+  --vp-code-lang-color: rgba(212, 212, 212, 0.86);
+  --vp-code-line-number-color: rgba(212, 212, 212, 0.45);
+  --vp-code-line-highlight-color: rgba(255, 255, 255, 0.07);
+  --vp-code-line-diff-add-color: rgba(53, 205, 75, 0.12);
+  --vp-code-line-diff-remove-color: rgba(252, 98, 93, 0.12);
+  --vp-code-copy-code-border-color: transparent;
+  --vp-code-copy-code-bg: transparent;
+  --vp-code-copy-code-hover-border-color: rgba(255, 255, 255, 0.12);
+  --vp-code-copy-code-hover-bg: rgba(255, 255, 255, 0.08);
+  --vp-code-copy-code-active-text: #f3f7ff;
+  --vp-code-tab-divider: rgba(148, 163, 184, 0.12);
+  --vp-code-tab-text-color: rgba(212, 212, 212, 0.72);
+  --vp-code-tab-bg: #282c34;
+  --vp-code-tab-hover-text-color: #ffffff;
+  --vp-code-tab-active-text-color: #ffffff;
+  --vp-code-tab-active-bar-color: #11a8cd;
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc div[class*="language-"],
+html[code-block="tk"]:not(.dark) .vp-block {
+  border: 1px solid rgba(27, 31, 39, 0.92);
+  box-shadow: 0 18px 34px -30px rgba(15, 23, 42, 0.45);
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc div[class*="language-"]::before,
+html[code-block="tk"]:not(.dark) .vp-block::before {
+  z-index: 2;
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc div[class*="language-"]::after,
+html[code-block="tk"]:not(.dark) .vp-block::after {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  height: var(--tk-code-block-fold-height, 40px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  background: linear-gradient(180deg, #343a46 0%, #2d333d 100%);
+  content: "";
+  pointer-events: none;
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc [class*="language-"] pre,
+html[code-block="tk"]:not(.dark) .vp-doc [class*="language-"] .vp-code,
+html[code-block="tk"]:not(.dark) .vp-block {
+  color: var(--vp-code-block-color);
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc [class*="language-"] .vp-code span,
+html[code-block="tk"]:not(.dark) .vp-block .vp-code span {
+  color: var(--shiki-dark, var(--vp-code-block-color));
+}
+
+html[code-block="tk"]:not(.dark)
+  .vp-doc
+  [class*="language-"].line-numbers-mode {
+  padding-left: 40px;
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc .line-numbers-wrapper {
+  width: 40px;
+  border-right-color: var(--vp-code-block-divider-color);
+  color: var(--vp-code-line-number-color);
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc [class*="language-"] > span.lang {
+  color: var(--vp-code-lang-color);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc [class*="language-"] > button.copy {
+  border-radius: 6px;
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc [class*="language-"] .code-arrow {
+  color: rgba(212, 212, 212, 0.62);
+}
+
+html[code-block="tk"]:not(.dark) .vp-doc [class*="language-"] .code-arrow:hover {
+  color: #f3f7ff;
+}
+
+html[code-block="tk"]:not(.dark)
+  .vp-doc
+  [class*="language-"]
+  .code-arrow
+  svg {
+  fill: currentColor;
+}
+
+html[code-block="tk"]:not(.dark) .vp-code-group {
+  margin-top: 18px;
+}
+
+html[code-block="tk"]:not(.dark) .vp-code-group .tabs {
+  border: 1px solid rgba(27, 31, 39, 0.92);
+  border-bottom: 0;
+  background: linear-gradient(180deg, #323846 0%, #282c34 100%);
+  box-shadow: none;
+}
+
+html[code-block="tk"]:not(.dark) .vp-code-group .tabs label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+html[code-block="tk"]:not(.dark) .vp-code-group .tabs label::after {
+  height: 2px;
+  border-radius: 999px;
+}
+
+html[code-block="tk"]:not(.dark) .vp-code-group div[class*="language-"],
+html[code-block="tk"]:not(.dark) .vp-block {
+  margin-top: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+@media (max-width: 640px) {
+  html[code-block="tk"]:not(.dark) .vp-doc [class*="language-"] > span.lang {
+    left: 70px;
+    font-size: 14px;
+  }
+
+  html[code-block="tk"]:not(.dark) .vp-doc .line-numbers-wrapper {
+    width: 36px;
+  }
+
+  html[code-block="tk"]:not(.dark)
+    .vp-doc
+    [class*="language-"].line-numbers-mode {
+    padding-left: 36px;
+  }
+}

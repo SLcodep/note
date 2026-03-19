@@ -9,7 +9,7 @@ const description = ["欢迎来到我个人笔记记录"].toString();
 export default defineConfig({
   base: "/",
   extends: teekConfig,
-  title: "SLcoedp的个人笔记",
+  title: "俺的独白",
   description,
   cleanUrls: false,
   lastUpdated: true,
