@@ -115,6 +115,23 @@ export const teekConfig = defineTeekConfig({
     langTextTransform: "lowercase",
     copiedDone: (TkMessage) => TkMessage.success("复制成功！"),
   },
+  themeEnhance: {
+    enabled: false,
+    layoutSwitch: {
+      disabled: true,
+      defaultMode: "bothWidthAdjustable",
+      defaultPageMaxWidth: 95,
+      defaultDocMaxWidth: 95,
+      disableHelp: true,
+      disablePageMaxWidthHelp: true,
+      disableDocMaxWidthHelp: true,
+    },
+    spotlight: {
+      disabled: true,
+      defaultValue: false,
+      disableHelp: true,
+    },
+  },
   articleShare: { enabled: true },
   articleUpdate: {
     enabled: true,

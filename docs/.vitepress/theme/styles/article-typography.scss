@@ -1,9 +1,10 @@
 .VPDoc .vp-doc {
   color: var(--vp-c-text-1);
-  font-family: var(--blog-font-reading);
-  font-size: 16.35px;
-  line-height: 1.96;
-  letter-spacing: 0.008em;
+  font-family: var(--g-font-family);
+  font-size: 16px;
+  line-height: 1.78;
+  letter-spacing: 0.004em;
+  word-wrap: break-word;
 }
 
 .VPDoc .vp-doc h1,
@@ -12,46 +13,56 @@
 .VPDoc .vp-doc h4,
 .VPDoc .vp-doc h5,
 .VPDoc .vp-doc h6 {
-  color: var(--vp-c-text-1);
-  font-family: var(--blog-font-reading);
-  letter-spacing: -0.018em;
+  color: var(--blog-text-main);
+  font-family: var(--g-font-family);
+  letter-spacing: -0.014em;
   text-wrap: balance;
 }
 
 .VPDoc .vp-doc h1 {
-  margin-bottom: 16px;
+  margin-bottom: 0.9rem;
   font-size: clamp(2.1rem, 3vw, 2.7rem);
-  font-weight: 700;
-  line-height: 1.18;
+  font-weight: 650;
+  line-height: 1.2;
 }
 
 .VPDoc .vp-doc h2 {
-  margin-top: 2.25rem;
-  margin-bottom: 0.95rem;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
   font-size: clamp(1.58rem, 2vw, 1.9rem);
-  font-weight: 700;
-  line-height: 1.26;
+  font-weight: 640;
+  line-height: 1.28;
 }
 
 .VPDoc .vp-doc h3 {
-  margin-top: 1.9rem;
-  margin-bottom: 0.8rem;
+  margin-top: 1.7rem;
+  margin-bottom: 0.7rem;
   font-size: 1.34rem;
-  font-weight: 700;
-  line-height: 1.32;
+  font-weight: 630;
+  line-height: 1.34;
 }
 
 .VPDoc .vp-doc h4 {
-  margin-top: 1.5rem;
-  margin-bottom: 0.72rem;
+  margin-top: 1.35rem;
+  margin-bottom: 0.65rem;
   font-size: 1.12rem;
-  font-weight: 700;
+  font-weight: 620;
   line-height: 1.38;
+}
+
+.VPDoc .vp-doc h1 a,
+.VPDoc .vp-doc h2 a,
+.VPDoc .vp-doc h3 a,
+.VPDoc .vp-doc h4 a,
+.VPDoc .vp-doc h5 a,
+.VPDoc .vp-doc h6 a {
+  color: inherit;
 }
 
 .VPDoc .vp-doc p,
 .VPDoc .vp-doc li {
-  letter-spacing: 0.008em;
+  line-height: 1.7;
+  letter-spacing: 0.003em;
 }
 
 .VPDoc .vp-doc p,
@@ -59,17 +70,18 @@
 .VPDoc .vp-doc ol,
 .VPDoc .vp-doc blockquote,
 .VPDoc .vp-doc table {
-  margin-top: 1.05rem;
-  margin-bottom: 1.05rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .VPDoc .vp-doc ul,
 .VPDoc .vp-doc ol {
   padding-left: 1.45rem;
+  line-height: 1.7;
 }
 
 .VPDoc .vp-doc li + li {
-  margin-top: 0.28rem;
+  margin-top: 0.22rem;
 }
 
 .VPDoc .vp-doc strong {
@@ -88,7 +100,7 @@
   padding: 0.85rem 1.1rem;
   background: rgba(255, 255, 255, 0.56);
   font-size: 0.97rem;
-  line-height: 1.9;
+  line-height: 1.75;
 }
 
 .VPDoc .vp-doc blockquote p {
@@ -114,17 +126,18 @@
 .VPDoc .vp-doc kbd,
 .VPDoc .vp-doc samp,
 .VPDoc .vp-doc .line-numbers-wrapper {
-  font-family: var(--blog-font-mono);
+  font-family: var(--g-font-family);
 }
 
 .VPDoc .vp-doc :not(pre) > code {
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 4px;
-  padding: 0.22rem 0.5rem;
+  border-radius: 3px;
+  padding: 0.08rem 0.34rem;
   color: var(--blog-accent);
   background: rgba(100, 100, 100, 0.08);
-  font-size: 0.9em;
+  font-size: 0.82em;
   font-weight: 500;
+  line-height: 1.35;
 }
 
 .dark .VPDoc .vp-doc :not(pre) > code {
@@ -135,8 +148,8 @@
 
 @media (max-width: 640px) {
   .VPDoc .vp-doc {
-    font-size: 15.5px;
-    line-height: 1.9;
+    font-size: 15px;
+    line-height: 1.74;
   }
 
   .VPDoc .vp-doc h1 {

@@ -16,7 +16,8 @@
 
 @font-face {
   font-family: "LXGW WenKai";
-  src: url("/fonts/LXGWWenKai-Regular.ttf") format("truetype");
+  src: url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/files/LXGWWenKai-Regular.woff2")
+    format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -24,35 +25,39 @@
 
 @font-face {
   font-family: "LXGW WenKai";
-  src: url("/fonts/LXGWWenKai-Regular.ttf") format("truetype");
+  src: url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/files/LXGWWenKai-Regular.woff2")
+    format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-:root {
-  --blog-font-mixed:
+#app {
+  --g-font-family:
     "JetBrains Mono", "LXGW WenKai", -apple-system, "Wenquanyi Micro Hei",
     "Wenquanyi Micro Hei Mono", "Microsoft YaHei", "PT Sans",
-    "Liberation Mono", monospace;
-  --blog-font-reading:
-    "LXGW WenKai", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-    sans-serif;
-  --blog-font-mono:
-    "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
-  --vp-font-family-base: var(--blog-font-mixed);
-  --vp-font-family-mono: var(--blog-font-mono);
+    "Liberation Mono", monospace, "Fira Code", Consolas, "Courier New",
+    Menlo, Monaco;
+}
+
+:root {
+  --vp-font-family-base: var(--g-font-family);
+  --vp-font-family-mono: var(--g-font-family);
 }
 
 html,
 body {
-  font-family: var(--blog-font-mixed);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #app,
+code,
+pre {
+  font-family: var(--g-font-family) !important;
+}
+
 button,
 input,
 textarea,
@@ -63,15 +68,13 @@ select,
 .DocSearch-Button,
 .tk-layout,
 .tk-pagination {
-  font-family: var(--blog-font-mixed);
+  font-family: var(--g-font-family);
 }
 
-code,
-pre,
 kbd,
 samp,
 .line-numbers-wrapper,
 [class*="language-"] > span.lang {
-  font-family: var(--blog-font-mono) !important;
+  font-family: var(--g-font-family) !important;
   font-variant-ligatures: normal;
 }
